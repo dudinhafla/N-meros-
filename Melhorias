@@ -1,0 +1,56 @@
+def obter_numeros():
+    """
+    Função para capturar números do usuário até que 'sair' seja digitado.
+    Retorna uma lista de números válidos.
+    """
+    numeros = []
+    while True:
+        entrada = input("Digite um número (ou 'sair' para terminar): ").strip().lower()
+        if entrada == 'sair':
+            break
+        try:
+            numero = float(entrada)
+            numeros.append(numero)
+        except ValueError:
+            print("⚠ Entrada inválida. Por favor, digite um número válido.")
+    return numeros
+
+
+def calcular_estatisticas(numeros):
+    """
+    Calcula e retorna estatísticas como soma, média, mínimo e máximo.
+    """
+    soma = sum(numeros)
+    media = soma / len(numeros)
+    minimo = min(numeros)
+    maximo = max(numeros)
+    return soma, media, minimo, maximo
+
+
+def exibir_resultados(numeros):
+    """
+    Exibe as estatísticas calculadas de uma lista de números.
+    """
+    print("\nResultados:")
+    print(f"Quantidade de números: {len(numeros)}")
+    soma, media, minimo, maximo = calcular_estatisticas(numeros)
+    print(f"Soma dos números: {soma}")
+    print(f"Média dos números: {media:.2f}")
+    print(f"Menor número: {minimo}")
+    print(f"Maior número: {maximo}")
+
+
+def main():
+    """
+    Função principal que executa o programa.
+    """
+    print("🔢 Bem-vindo ao calculador de estatísticas!\n")
+    numeros = obter_numeros()
+    if numeros:
+        exibir_resultados(numeros)
+    else:
+        print("\nNenhum número foi digitado. Encerrando o programa.")
+
+
+if __name__ == "__main__":
+    main()
