@@ -1,0 +1,24 @@
+def main():
+    print("Bem-vindo ao calculador de soma e média!\n")
+    
+    numeros = []
+    while True:
+        try:
+            entrada = input("Digite um número (ou 'sair' para terminar): ").strip().lower()
+            if entrada == 'sair':
+                break
+            numero = float(entrada)
+            numeros.append(numero)
+        except ValueError:
+            print("Entrada inválida. Por favor, digite um número válido.")
+    
+    if numeros:
+        soma = sum(numeros)
+        media = soma / len(numeros)
+        print(f"\nSoma dos números: {soma}")
+        print(f"Média dos números: {media:.2f}")
+    else:
+        print("\nNenhum número foi digitado.")
+
+if __name__ == "__main__":
+    main()
